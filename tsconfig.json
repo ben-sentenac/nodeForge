@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "strict": true,
+    //"esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "NodeNext",
+    "baseUrl": ".",
+    "paths": {
+      "@utils/*": ["packages/*/src"]
+    },
+    "declaration": true,  // To generate .d.ts files for type definitions
+    "sourceMap": true,     // Helps with debugging
+    "outDir": "dist",      // Output directory for compiled JS files
+    "rootDir": "."         // Specifies where TypeScript should look for source files
+  },
+  "include": ["packages/*/src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

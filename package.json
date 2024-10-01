@@ -1,0 +1,17 @@
+{
+  "name": "nodeforge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc --build packages/*/tsconfig.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "borp": "^0.17.0",
+    "typescript": "^5.6.2"
+  }
+}
