@@ -6,7 +6,7 @@ import process from 'node:process';
 
 //TODO get the copy stats progression 
 
-export async function * generateFromSource(source: string, destination?: string,data?:boolean):AsyncGenerator {
+export async function * generateFromSource(source: string, destination?: string,data?:boolean):AsyncGenerator<string> {
     if(!source || typeof source !== 'string') {
         throw new TypeError('source argument must be a string');
     }
@@ -41,7 +41,7 @@ export async function * generateFromSource(source: string, destination?: string,
         throw error;
     }
 }
-
+//TODO 
 async function copyFile(source:string, target:string) {
     const sourceStream = createReadStream(source);
     const targetStream = createWriteStream(target);
