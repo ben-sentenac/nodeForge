@@ -6,16 +6,16 @@ import process from 'node:process';
 
 //TODO get the copy stats progression 
 
-export async function * generateFromSource(source: string, destination?: string,data?:boolean):AsyncGenerator<string> {
+export async function * generateFromSource(source: string, destination?: string,log?:boolean):AsyncGenerator<string> {
     if(!source || typeof source !== 'string') {
         throw new TypeError('source argument must be a string');
     }
     if(typeof destination === 'boolean') {
-        data = destination;
+        log = destination;
         destination = process.cwd();
     }
     const _destination = !destination || typeof destination !== 'string' ?  process.cwd() : destination;
-    const _data = data || false;
+    const _log = log || false;
 
     try {
         //create destination
@@ -26,11 +26,12 @@ export async function * generateFromSource(source: string, destination?: string,
             const srcPath = path.join(source, file);
             const destPath = path.join(_destination, file);
             const fileStat = await fs.stat(srcPath);
-            if(_data) {
+            if(_log) {
+                //TODO improve loggin using winston or pino
                 console.log(`file ${destPath} succefully created!`);
             }
             if (fileStat.isDirectory()) {
-                yield* generateFromSource(srcPath, destPath,data);
+                yield* generateFromSource(srcPath, destPath,log);
             } else {
                 yield copyFile(srcPath, destPath);
             }
@@ -39,7 +40,7 @@ export async function * generateFromSource(source: string, destination?: string,
     } catch (error) {
         //log error;
         throw error;
-    }
+    } 
 }
 //TODO 
 async function copyFile(source:string, target:string) {
