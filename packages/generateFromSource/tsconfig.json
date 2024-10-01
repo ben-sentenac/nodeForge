@@ -1,0 +1,10 @@
+{
+    "extends": "../../tsconfig.json",  // Extends root config
+    "compilerOptions": {
+      "outDir": "dist",                // Local output directory for this package
+      "rootDir": "src"                 // Local source directory for this package
+    },
+    "include": ["src/**/*"],           // Include all TypeScript files in the src folder
+    "exclude": ["node_modules", "dist"]
+  }
+  
